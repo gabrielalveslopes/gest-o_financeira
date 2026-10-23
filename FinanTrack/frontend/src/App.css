@@ -642,3 +642,228 @@ h1 {
     animation-duration: 0.01ms !important;
   }
 }
+
+
+/* Modal de transações */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  padding: 20px;
+  background: #000b;
+  backdrop-filter: blur(5px);
+}
+
+.transaction-modal {
+  width: 100%;
+  max-width: 480px;
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  padding: 25px;
+  background: #151820;
+  border: 1px solid #30343e;
+  border-radius: 16px;
+  box-shadow: 0 24px 80px #0008;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.modal-header .eyebrow {
+  margin-bottom: 7px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 21px;
+}
+
+.transaction-form {
+  display: grid;
+  gap: 18px;
+}
+
+.type-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.type-selector legend {
+  margin-bottom: 10px;
+  color: #c4c8d2;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.type-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 45px;
+  color: #a8adbb;
+  background: #1b1e27;
+  border: 1px solid #30343e;
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+.type-option.selected.expense-option {
+  color: #f0a3a3;
+  background: #38252b;
+  border-color: #86505a;
+}
+
+.type-option.selected.income-option {
+  color: #70e1bd;
+  background: #1d332a;
+  border-color: #477a67;
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+  color: #c4c8d2;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  min-height: 45px;
+  padding: 0 12px;
+  color: #f0f1f5;
+  background: #101219;
+  border: 1px solid #343844;
+  border-radius: 9px;
+  outline: none;
+  font-size: 13px;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: #70e1bd;
+  box-shadow: 0 0 0 3px #70e1bd20;
+}
+
+.form-field input::placeholder {
+  color: #747b89;
+}
+
+.form-field input[type="date"] {
+  color-scheme: dark;
+}
+
+.form-error {
+  margin: 0;
+  padding: 10px 12px;
+  color: #ffb5b5;
+  background: #38252b;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.secondary-button {
+  min-height: 43px;
+  padding: 0 15px;
+  color: #c4c8d2;
+  background: #20232c;
+  border: 1px solid #373b46;
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+.secondary-button:hover {
+  background: #292d37;
+}
+
+.form-actions .primary-button {
+  min-height: 43px;
+}
+
+.transaction-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 0;
+}
+
+.delete-button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: #9a8490;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+}
+
+.delete-button:hover {
+  color: #ffaaaa;
+  background: #38252b;
+}
+
+.empty-state {
+  padding: 28px 10px;
+  color: #9298a7;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 480px) {
+  .modal-backdrop {
+    align-items: end;
+    padding: 0;
+  }
+
+  .transaction-modal {
+    max-width: none;
+    max-height: 92dvh;
+    padding: 22px 18px max(22px, env(safe-area-inset-bottom));
+    border-radius: 18px 18px 0 0;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .form-actions button {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .transaction-actions {
+    gap: 4px;
+  }
+
+  .transaction-amount {
+    font-size: 10px;
+  }
+}
